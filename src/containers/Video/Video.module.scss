@@ -1,0 +1,14 @@
+@import "../../assets/main.scss";
+.Video {
+    display: block;
+    width: 100%;
+    font-size: 0;
+    padding: 1rem;
+    position: relative;
+    p {
+        font-size: 1rem;
+        position: absolute;
+        left: 5rem;
+        top: 10rem;
+    }
+}

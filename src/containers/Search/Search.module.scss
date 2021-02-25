@@ -1,0 +1,82 @@
+@import "../../assets/main.scss";
+.Search {
+    // display: inline-block;
+    width: 30%;
+    font-size: 0;
+    padding: 1rem;
+    .Query {
+        // display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 350px;
+        padding: 1rem 0;
+        text-align: center;
+        input {
+            // display: block;
+            width: 100%;
+            height: 3rem;
+            padding: 0.5rem 0.7rem;
+            box-sizing: border-box;
+            border: solid 1px $borderColor;
+            border-radius: 1.2rem;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            background-color: $placeholderBgrColor;
+            color: $optionsColor;
+            &::placeholder {
+                font-size: 1.2rem;
+                line-height: 1.5;
+                color: $placeholderColor;
+            }
+            &:focus {
+                border: solid 1px #e1b12c;
+                border-radius: 0.8rem;
+            }
+        }
+    }
+    .Quantity,
+    .Duration {
+        width: 100%;
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.5rem;
+        label {
+            display: block;
+            text-align: center;
+            margin-bottom: .7rem;
+        }
+        select {
+            margin: 0 auto;
+            font-size: 1rem;
+            display: block;
+            color: $optionsColor;
+            width: 50%;
+            background-color: $placeholderBgrColor;
+            border: solid 1px $borderColor;
+            border-radius: .2rem;
+            height: 2.5rem;
+            padding: 0.5rem 0.7rem;
+            cursor: pointer;
+            option {
+                border: solid 1px $borderColor;
+                border-radius: .2rem;
+                height: 2.5rem;
+                padding: 0.5rem 0.7rem;
+                background-color: $placeholderBgrColor;
+                cursor: pointer;
+            }
+        }
+    }
+    button {
+        display: block;
+        margin: 0 auto;
+        background-color: $buttonColor;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 700;
+        color: $buttonFontColor;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        cursor: pointer;
+    }
+}

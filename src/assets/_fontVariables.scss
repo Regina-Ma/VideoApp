@@ -1,0 +1,95 @@
+$h2Color: #062a78;
+$h3Color: #062a78;
+$h3-1Color: #ffffff;
+$h4Color: #000000;
+$h4-1Color: #cfcfcf;
+$h5Color: #062a78;
+$p1Color: #818181;
+$p2Color: #cfcfcf;
+$p3Color: #cfcfcf;
+$p4Color: #000000;
+$p5Color: #ff8603;
+$textCat: #818181;
+$inputText: #000000;
+$invalidColor: #cd5d7d;
+$closeColor: #ffffff;
+$underLine: #062a78;
+//Font size
+$font-size-10px: 1rem;
+$font-size-11px: 1.1rem;
+$font-size-12px: 1.2rem;
+$font-size-13px: 1.3rem;
+$font-size-14px: 1.4rem;
+$font-size-15px: 1.5rem;
+$font-size-17px: 1.7rem;
+$font-size-18px: 1.8rem;
+$font-size-20px: 2rem;
+$font-size-24px: 2.4rem;
+$font-size-28px: 2.8rem;
+$buttonFontsize: 1.3rem;
+$h2fontSize: 2.1rem;
+$h3fontSize: 1.3rem;
+$h4fontSize: 1.4rem;
+$h5fontSize: 2.4rem;
+$p1fontSize: 1.4rem;
+$p2fontSize: 1.3rem;
+$p3fontSize: 1.1rem;
+$p4fontSizePrice: 2.4rem;
+$photoFontSize: 1.7rem;
+////////////////////////////
+// Font weight
+$font-Weight-light: 300;
+$font-Weight-regular: 400;
+$font-Weight-medium: 500;
+$font-Weight-semiBold: 600;
+$font-Weight-bold: 700;
+$font-Weight-extraBold: 800;
+$buttonFontWeight: 700;
+$h2FontWeight: 600;
+$h3FontWeight: 700;
+$h4FontWeight: 700;
+$h5FontWeight: 400;
+$p1fontWeight: 500;
+$p1-1fontWeight: 700;
+$p2fontWeight: 400;
+$p2-1fontWeight: 400;
+$p3fontWeight: 400;
+$p4fontWeightPrice: 400;
+$photoFontWeight: 700;
+////////////////////////////
+//Font
+$monserat: "Montserrat",
+sans-serif;
+////////////////////////////
+// Font Styling
+%h2-styles {
+    font-size: $font-size-15px;
+    font-weight: $font-Weight-bold;
+    font-family: $monserat;
+}
+
+%p-styles {
+    color: $textCat;
+    font-size: $font-size-13px;
+    font-weight: $font-Weight-light;
+    font-family: $monserat;
+}
+
+%p3-styles {
+    font-style: $monserat;
+    font-size: $p3fontSize;
+    font-weight: $p3fontWeight;
+    color: $p3Color;
+}
+
+%title {
+    font-style: $monserat;
+    font-size: $h3fontSize;
+    font-weight: $h3FontWeight;
+    color: $h3Color;
+    text-transform: uppercase;
+    padding-bottom: 2.4rem;
+}
+
+////////////////////////////
+// Font variable colors

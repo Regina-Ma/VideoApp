@@ -1,0 +1,275 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button,
+select {
+  padding: 0;
+  border: none;
+  margin: none;
+  color: inherit;
+  font-family: inherit;
+  line-height: 1;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button[disabled],
+html input[disabled],
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+input[type="checkbox"],
+input[type="radio"],
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="search"],
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.Search {
+  width: 30%;
+  font-size: 0;
+  padding: 1rem;
+}
+
+.Search .Query {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 350px;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.Search .Query input {
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem 0.7rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: solid 1px #353b48;
+  border-radius: 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  background-color: #f5f6fa;
+  color: #273c75;
+}
+
+.Search .Query input::-webkit-input-placeholder {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #718093;
+}
+
+.Search .Query input:-ms-input-placeholder {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #718093;
+}
+
+.Search .Query input::-ms-input-placeholder {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #718093;
+}
+
+.Search .Query input::placeholder {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #718093;
+}
+
+.Search .Query input:focus {
+  border: solid 1px #e1b12c;
+  border-radius: 0.8rem;
+}
+
+.Search .Quantity,
+.Search .Duration {
+  width: 100%;
+  display: block;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.Search .Quantity label,
+.Search .Duration label {
+  display: block;
+  text-align: center;
+  margin-bottom: .7rem;
+}
+
+.Search .Quantity select,
+.Search .Duration select {
+  margin: 0 auto;
+  font-size: 1rem;
+  display: block;
+  color: #273c75;
+  width: 50%;
+  background-color: #f5f6fa;
+  border: solid 1px #353b48;
+  border-radius: .2rem;
+  height: 2.5rem;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+}
+
+.Search .Quantity select option,
+.Search .Duration select option {
+  border: solid 1px #353b48;
+  border-radius: .2rem;
+  height: 2.5rem;
+  padding: 0.5rem 0.7rem;
+  background-color: #f5f6fa;
+  cursor: pointer;
+}
+
+.Search button {
+  display: block;
+  margin: 0 auto;
+  background-color: #e1b12c;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c23616;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Search.module.css.map */

@@ -1,0 +1,22 @@
+@import "../../assets/main.scss";
+.Main {
+    display: block;
+    background-color: $bgrColor;
+    .Heading {
+        font-size: 3rem;
+        color: $h1Color;
+        text-align: center;
+        margin: 0;
+        padding: 3rem;
+    }
+    .Content {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        // .VideoContainer {
+        //     display: inline-block;
+        //     width: 70%;
+        //     font-size: 0;
+        // }
+    }
+}
