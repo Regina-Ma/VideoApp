@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Swal from "sweetalert2";
+
 import Search from "../Search/Search";
 import Video from "../Video/Video";
 import Backdrop from "../../components/Backdrop/Backdrop";
@@ -9,10 +11,7 @@ import classes from "./VideoApp.module.scss";
 
 interface Props {}
 interface State {
-  query: string;
-  quantities: Array<number>;
   selectedQuantity: number;
-  durations: Array<number>;
   selectedDuration: number;
   currentUrlindex: number;
   isLoaded: boolean;
@@ -24,10 +23,7 @@ class VideoApp extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      query: "",
-      quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       selectedQuantity: 1,
-      durations: [10, 20, 30],
       selectedDuration: 10,
       currentUrlindex: 0,
       isLoading: false,
@@ -35,56 +31,67 @@ class VideoApp extends Component<Props, State> {
       results: 0,
       videoObjects: [] as Array<VideoProps>,
     };
-    this.handleQueryInput = this.handleQueryInput.bind(this);
     this.handleQuantitySelection = this.handleQuantitySelection.bind(this);
     this.handleDurationSelection = this.handleDurationSelection.bind(this);
     this.searchVideoHandler = this.searchVideoHandler.bind(this);
     this.handleEnded = this.handleEnded.bind(this);
   }
 
-  handleQueryInput(value: string) {
-    this.setState({ query: value });
-  }
   handleQuantitySelection(event: React.ChangeEvent<HTMLSelectElement>) {
     this.setState({ selectedQuantity: +event.target.value });
   }
   handleDurationSelection(event: React.ChangeEvent<HTMLSelectElement>) {
     this.setState({ selectedDuration: +event.target.value });
   }
-  searchVideoHandler = () => {
+  searchVideoHandler = (query: string) => {
     const key = process.env.REACT_APP_PEXELS_KEY;
-    this.setState({
-      isLoading: true,
-    });
+    this.setState({ isLoading: true });
+
     const params = new URLSearchParams({
-      query: this.state.query,
+      query: query,
       per_page: this.state.selectedQuantity.toString(),
     }).toString();
+
     if (key) {
       fetch(
         `https://api.pexels.com/videos/search?orientation=landscape&${params}`,
         {
           method: "get",
-          headers: new Headers({
-            Authorization: key, // nepamirsti git ignore
-          }),
+          headers: new Headers({ Authorization: key }),
         }
       )
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) throw res;
+          return res.json();
+        })
         .then((res: VideoResponse) => {
           console.log("api response");
           console.log(res);
-          this.setState({
-            isLoaded: true,
-            results: res.total_results,
-            videoObjects: res.videos,
-            selectedQuantity:
-              res.total_results < this.state.selectedQuantity
-                ? res.total_results
-                : this.state.selectedQuantity,
-          });
+          if (res.total_results) {
+            this.setState({
+              isLoaded: true,
+              results: res.total_results,
+              videoObjects: res.videos,
+              selectedQuantity:
+                res.total_results < this.state.selectedQuantity
+                  ? res.total_results
+                  : this.state.selectedQuantity,
+            });
+          } else {
+            this.setState({ isLoading: false });
+            Swal.fire("Sorry, no videos found by this term");
+          }
         })
-        .catch(); // TODO: pabaigti
+        .catch((error: Response) => {
+          this.setState({ isLoading: false });
+          error.json().then((body) => {
+            body.code
+              ? Swal.fire(body.code)
+              : Swal.fire("Ups, something went wrong");
+          });
+        });
+    } else {
+      Swal.fire("Ups, something went wrong");
     }
   };
   handleEnded = () => {
@@ -106,37 +113,24 @@ class VideoApp extends Component<Props, State> {
   render() {
     return (
       <div className={classes.Main}>
-        <h1 className={classes.Heading}>
-          {" "}
-          The Last Video App You'll Ever Need
-        </h1>
+        <h1 className={classes.Heading}>The Video App</h1>
         <div className={classes.Content}>
           <Search
-            query={this.state.query}
-            enterQuery={this.handleQueryInput}
             selectedQuantity={this.state.selectedQuantity}
             selectQuantity={this.handleQuantitySelection}
-            quantities={this.state.quantities}
-            durations={this.state.durations}
             selectedDuration={this.state.selectedDuration}
             selectDuration={this.handleDurationSelection}
             searchVideo={this.searchVideoHandler}
           />
-          {/* <div className={classes.VideoContainer}> */}
           {this.state.isLoaded ? (
-            <>
-              <Video
-                currentVideo={
-                  this.state.videoObjects[this.state.currentUrlindex]
-                }
-                duration={this.state.selectedDuration}
-                videoEnded={this.handleEnded}
-              />
-            </>
+            <Video
+              currentVideo={this.state.videoObjects[this.state.currentUrlindex]}
+              duration={this.state.selectedDuration}
+              videoEnded={this.handleEnded}
+            />
           ) : (
             <Backdrop isLoading={this.state.isLoading} />
           )}
-          {/* </div> */}
         </div>
       </div>
     );

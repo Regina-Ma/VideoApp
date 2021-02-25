@@ -1,28 +1,47 @@
 import React, { Component } from "react";
+import Swal from "sweetalert2";
 
 import classes from "./Search.module.scss";
 
 interface Props {
-  query: string;
-  enterQuery: any;
   selectedQuantity: number;
+  selectedDuration: number;
   selectQuantity: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  selectDuration: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  searchVideo: (value: string) => void;
+}
+interface State {
+  query: string;
   quantities: Array<number>;
   durations: Array<number>;
-  selectedDuration: number;
-  selectDuration: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  searchVideo: () => void;
 }
 
-class Search extends Component<Props> {
+class Search extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      query: "",
+      quantities: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      durations: [10, 20, 30],
+    };
+  }
+
+  handleSubmit() {
+    if (!this.state.query) {
+      Swal.fire("Please fill in the query field");
+    } else {
+      this.props.searchVideo(this.state.query);
+    }
+  }
   render() {
     return (
       <div className={classes.Search}>
         <div className={classes.Query}>
           <input
             type="text"
-            value={this.props.query}
-            onChange={(e) => this.props.enterQuery(e.target.value)}
+            required
+            value={this.state.query}
+            onChange={(e) => this.setState({ query: e.target.value })}
             placeholder="Video search term"
           />
         </div>
@@ -34,7 +53,7 @@ class Search extends Component<Props> {
             value={this.props.selectedQuantity}
             onChange={this.props.selectQuantity}
           >
-            {this.props.quantities.map((quantity) => {
+            {this.state.quantities.map((quantity) => {
               return (
                 <option key={quantity} value={quantity}>
                   {quantity}
@@ -51,7 +70,7 @@ class Search extends Component<Props> {
             value={this.props.selectedDuration}
             onChange={this.props.selectDuration}
           >
-            {this.props.durations.map((duration) => {
+            {this.state.durations.map((duration) => {
               return (
                 <option key={duration} value={duration}>
                   {duration} seconds
@@ -60,7 +79,7 @@ class Search extends Component<Props> {
             })}
           </select>
         </div>
-        <button onClick={this.props.searchVideo}>Search</button>
+        <button onClick={() => this.handleSubmit()}>Search</button>
       </div>
     );
   }
