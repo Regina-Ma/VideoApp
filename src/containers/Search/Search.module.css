@@ -165,6 +165,9 @@ input[type="search"]::-webkit-search-decoration
 
 .Search {
   width: 30%;
+  max-width: 320px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 0;
   padding: 1rem;
 }

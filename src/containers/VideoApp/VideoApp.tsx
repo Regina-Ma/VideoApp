@@ -45,7 +45,7 @@ class VideoApp extends Component<Props, State> {
   }
   searchVideoHandler = (query: string) => {
     const key = process.env.REACT_APP_PEXELS_KEY;
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, currentUrlindex: 0 });
 
     const params = new URLSearchParams({
       query: query,
@@ -65,8 +65,6 @@ class VideoApp extends Component<Props, State> {
           return res.json();
         })
         .then((res: VideoResponse) => {
-          console.log("api response");
-          console.log(res);
           if (res.total_results) {
             this.setState({
               isLoaded: true,
@@ -94,22 +92,33 @@ class VideoApp extends Component<Props, State> {
       Swal.fire("Ups, something went wrong");
     }
   };
-  handleEnded = () => {
-    const nextUrlindex =
-      (this.state.currentUrlindex + 1) % this.state.videoObjects.length;
-    this.setState({ currentUrlindex: nextUrlindex });
+  handleEnded = (video: HTMLVideoElement | undefined) => {
+    if (this.state.selectedQuantity === 1 && video !== undefined) {
+      video.play();
+    } else {
+      const nextUrlindex =
+        (this.state.currentUrlindex + 1) % this.state.videoObjects.length;
+      this.setState({ currentUrlindex: nextUrlindex });
+    }
   };
 
   componentDidUpdate() {
     const video = document.querySelector("video") as HTMLVideoElement;
     if (video) {
       video.ontimeupdate = () => {
-        if (video.currentTime >= this.state.selectedDuration) {
-          this.handleEnded();
+        if (
+          video.currentTime >= this.state.selectedDuration ||
+          video.currentTime >= video.duration
+        ) {
+          this.state.selectedQuantity === 1
+            ? this.handleEnded(video)
+            : this.handleEnded(undefined);
         }
       };
+      video.play();
     }
   }
+
   render() {
     return (
       <div className={classes.Main}>

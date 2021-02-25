@@ -171,12 +171,20 @@ input[type="search"]::-webkit-search-decoration
   font-size: 2rem;
   text-align: center;
   text-transform: capitalize;
-  color: white;
-  margin: 1rem;
+  color: #dcdde1;
+  margin: 0 auto;
   position: relative;
 }
 
 .Backdrop p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.Backdrop .FallBackContainer {
   position: absolute;
   top: 50%;
   left: 50%;

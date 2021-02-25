@@ -165,7 +165,7 @@ input[type="search"]::-webkit-search-decoration
 
 .Main {
   display: block;
-  background-color: #dcdde1;
+  height: 100%;
 }
 
 .Main .Heading {
@@ -177,13 +177,20 @@ input[type="search"]::-webkit-search-decoration
 }
 
 .Main .Content {
+  height: 75vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  position: relative;
 }
 /*# sourceMappingURL=VideoApp.module.css.map */

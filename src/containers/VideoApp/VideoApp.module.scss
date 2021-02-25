@@ -1,7 +1,7 @@
 @import "../../assets/main.scss";
 .Main {
     display: block;
-    background-color: $bgrColor;
+    height: 100%;
     .Heading {
         font-size: 3rem;
         color: $h1Color;
@@ -10,13 +10,11 @@
         padding: 3rem;
     }
     .Content {
+        height: 75vh;
         display: flex;
-        justify-content: space-around;
+        flex-direction: row;
+        justify-content: flex-start;
         align-items: stretch;
-        // .VideoContainer {
-        //     display: inline-block;
-        //     width: 70%;
-        //     font-size: 0;
-        // }
+        position: relative;
     }
 }
