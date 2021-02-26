@@ -3,14 +3,18 @@ import Spinner from "../Spinner/Spinner";
 
 import classes from "./Backdrop.module.scss";
 
-interface Props {
+export interface Props {
   isLoading: boolean;
 }
 export default class Backdrop extends React.Component<Props> {
   render() {
     return (
-      <div className={classes.Backdrop}>
-        {this.props.isLoading ? <Spinner /> : <p>Videos will play here</p>}
+      <div className={classes.Backdrop} data-testid="backdrop">
+        {this.props.isLoading ? (
+          <Spinner />
+        ) : (
+          <p data-testid="paragraph">Videos will play here</p>
+        )}
       </div>
     );
   }

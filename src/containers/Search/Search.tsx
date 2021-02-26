@@ -3,14 +3,14 @@ import Swal from "sweetalert2";
 
 import classes from "./Search.module.scss";
 
-interface Props {
+export interface Props {
   selectedQuantity: number;
   selectedDuration: number;
   selectQuantity: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   selectDuration: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   searchVideo: (value: string) => void;
 }
-interface State {
+export interface State {
   query: string;
   quantities: Array<number>;
   durations: Array<number>;
@@ -35,9 +35,10 @@ class Search extends Component<Props, State> {
   }
   render() {
     return (
-      <div className={classes.Search}>
+      <div className={classes.Search} data-testid="search">
         <div className={classes.Query}>
           <input
+            data-testid="query"
             type="text"
             required
             value={this.state.query}
@@ -48,8 +49,9 @@ class Search extends Component<Props, State> {
         <div className={classes.Quantity}>
           <label htmlFor="">Number of videos to play</label>
           <select
-            name=""
-            id=""
+            data-testid="quantity"
+            // name=""
+            // id=""
             value={this.props.selectedQuantity}
             onChange={this.props.selectQuantity}
           >
@@ -65,8 +67,9 @@ class Search extends Component<Props, State> {
         <div className={classes.Duration}>
           <label htmlFor="">Each video play up to</label>
           <select
-            name=""
-            id=""
+            data-testid="duration"
+            // name=""
+            // id=""
             value={this.props.selectedDuration}
             onChange={this.props.selectDuration}
           >
@@ -79,7 +82,9 @@ class Search extends Component<Props, State> {
             })}
           </select>
         </div>
-        <button onClick={() => this.handleSubmit()}>Search</button>
+        <button type="submit" onClick={() => this.handleSubmit()}>
+          Search
+        </button>
       </div>
     );
   }
